@@ -10,7 +10,7 @@ public class SeleniumTestBase {
 
     protected static WebDriver driver;
 
-    public static void beforeAll() {
+    public static void setUp() {
         var options = new ChromeOptions();
         // options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
@@ -20,13 +20,13 @@ public class SeleniumTestBase {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    public static WebDriver getDriver() {
-        return driver;
-    }
-
-    public static void afterAll() {
+    public static void close() {
         if (driver != null) {
             driver.quit();
         }
     }
+
+        public static WebDriver getDriver() {
+            return driver;
+        }
 }

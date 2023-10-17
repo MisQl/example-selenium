@@ -10,13 +10,13 @@ public class LoginPage {
 
     @Given("Open login page")
     public void openPage() {
-        var driver = Context.getDriver();
+        var driver = Context.getWebDriver();
         driver.get("");
     }
 
     @When("Login as {string} user and set a default mandator")
     public void loginAs(String username) {
-        var driver = Context.getDriver();
+        var driver = Context.getWebDriver();
         var password = getPassword(username);
         driver.findElement(By.id("userName")).click();
         driver.findElement(By.id("userName")).sendKeys(username);

@@ -11,7 +11,7 @@ public class DashboardPage {
 
     @Then("User has been logged")
     public void userHasBeenLogged() {
-        var driver = Context.getDriver();
+        var driver = Context.getWebDriver();
         var wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         var element = driver.findElement(By.id("logout"));
         wait.until(d -> element.isDisplayed());

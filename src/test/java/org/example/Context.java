@@ -4,11 +4,13 @@ import org.openqa.selenium.WebDriver;
 
 public class Context {
 
-    static {
-        SeleniumTestBase.beforeAll();
+    private static WebDriver webDriver;
+
+    public static WebDriver getWebDriver() {
+        return webDriver;
     }
 
-    public static WebDriver getDriver() {
-        return SeleniumTestBase.getDriver();
+    public static void setWebDriver(WebDriver webDriver) {
+        Context.webDriver = webDriver;
     }
 }
