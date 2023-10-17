@@ -1,22 +1,23 @@
 package org.example.steps;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import org.example.Context;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class LoginPage {
 
-    private final WebDriver driver;
-
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
+    @Given("Open login page")
+    public void openPage() {
+        var driver = Context.getDriver();
+        driver.get("");
     }
 
-    public void openPage(String url) {
-        driver.get(url);
-    }
-
-    public void loginAsDefaultMandator(String username, String password) {
+    @When("Login as {string} user and set a default mandator")
+    public void loginAs(String username) {
+        var driver = Context.getDriver();
+        var password = getPassword(username);
         driver.findElement(By.id("userName")).click();
         driver.findElement(By.id("userName")).sendKeys(username);
         driver.findElement(By.id("password")).click();
@@ -30,5 +31,12 @@ public class LoginPage {
         var builder2 = new Actions(driver);
         builder2.moveToElement(element2, 0, 0).perform();
         driver.findElement(By.id("activateMandant")).click();
+    }
+
+    private String getPassword(String username) {
+        return switch (username) {
+            case "username" -> "password";
+            default -> null;
+        };
     }
 }
