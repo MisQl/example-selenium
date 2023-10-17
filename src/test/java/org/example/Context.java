@@ -9,6 +9,6 @@ public class Context {
     }
 
     public static WebDriver getDriver() {
-        return SeleniumTestBase.driver;
+        return SeleniumTestBase.getDriver();
     }
 }

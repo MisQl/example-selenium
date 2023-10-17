@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public class SeleniumTestBase {
 
-    public static WebDriver driver;
+    protected static WebDriver driver;
 
     public static void beforeAll() {
         var options = new ChromeOptions();
@@ -18,6 +18,10 @@ public class SeleniumTestBase {
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 
     public static void afterAll() {
